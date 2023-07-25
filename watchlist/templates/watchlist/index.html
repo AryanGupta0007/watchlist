@@ -1,0 +1,41 @@
+{% extends "watchlist/layout.html" %}
+{% load static %}
+{% block title %} Index {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static "watchlist/index.css" %}">{% endblock %}
+{% block content %}
+    <div id="add_button">
+        <button id="add">Add a movie</button></div>
+    <div id="remove_button">
+        <button id="remove">Remove a movie</button><br>
+    </div>
+    <div id="view_button">
+        <button id="view_list">View the list</button>
+    </div>
+    <div id="add_form">
+    <form id="add_movies" style="display:None" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Movie Name" name="movieName" id="movieField">
+        <input type="text" placeholder="Streaming Platform" name="platformName" id="platformField">
+        <input type="submit" id="addToDb" name="Submit">
+
+    </form>
+    </div>
+    <div id="view_list_area">
+    <ul id="view_movies" style="display:None">
+    {% for movie in movies %}
+{#            <table>#}
+{#            <tr></tr>#}
+            <li id="displayListArea">Watch {{ movie.movie_name }} on {{ movie.platform_name }}
+        <div id="rb">
+        <form method="post"  class="removeItems" style="display:None">
+            {% csrf_token %}
+            <input type="hidden" name="movie_id" value="{{ movie.pk }}">
+            <button  class='rembuttons' type='submit' >Remove</button>
+        </form></div></li>
+
+{#        </table>#}
+    {% endfor %}
+    </ul>
+ </div>
+    <script src="{% static 'watchlist/index.js' %}"></script>
+{% endblock %}

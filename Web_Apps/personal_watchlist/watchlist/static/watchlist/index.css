@@ -1,0 +1,53 @@
+body{
+    background-color: red;
+}
+#add{
+    color:blue;
+    /*background-color:;*/
+}
+#remove{
+    color:blue;
+    /*background-color:;*/
+}
+#view_list{
+    color:blue;
+    /*background-color:;*/
+}
+#add_button{
+
+    /*margin: 50px;*/
+    padding: 10px;
+
+}
+#remove_button{
+    /*margin: 50px;*/
+    padding: 10px;
+
+}
+#view_button{
+    /*margin: 50px;*/
+    padding: 10px;
+}
+
+#add_form{
+    /*margin: 50px;*/
+    padding: 10px;
+    border: 50px;
+
+}
+
+#view_list_area{
+    align-content: center;
+    padding: 10px;
+    border: 50px;
+
+}
+
+#displayListArea{
+    color: aqua;
+    font-family: sans-serif;
+}
+.rembuttons{
+    align-content: flex-start;
+    margin: 100px;
+}

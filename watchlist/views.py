@@ -5,6 +5,7 @@ from django.urls import reverse
 from .forms import RegistrationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -35,20 +36,26 @@ def index(request):
             movie_name = request.POST['movieName'].title()
             platform_name = request.POST['platformName'].title()
             author = request.user
-            print('author'+ str(author))
+            # print('author '+ strauthor)
+
+            user_instance = User.objects.get(username=author)
+            print('author: ' + str(author.username), 'id ' + str(author.id))
             entry = List(movie_name=movie_name, platform_name=platform_name)
             print(entry)
             entry.save()
+            user_profile, created = UserProfile.objects.get_or_create(username=author)
+            print('user profile ' + str(user_profile))
             # problematic
-            user_profile = UserProfile.objects.create(user=author)
-            print(user_profile)
+            # user_profile = UserProfile.objects.create(username=user_instance)
+            # print('user profile ' + str(user_profile))
             user_profile.items.add(entry)
             user_profile.save()
             print(user_profile.items.all())
 
             # print(f"{movie_name} streaming on {platform_name}")
 
-        except:
+        except Exception as error:
+            print(error)
             movie_id = request.POST['movie_id']
             # print(movie_id)
             movie = List.objects.get(pk=movie_id)

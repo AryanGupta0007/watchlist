@@ -1,0 +1,12 @@
+{% extends "watchlist/layout.html" %}
+{% block title %} Login {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button type="submit">Login</button>
+    </form>
+    <p>New visitor? Register <a href="{% url 'signup' %}">here</a></p>
+{% endblock %}

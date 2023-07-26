@@ -16,4 +16,4 @@ class UserProfile(models.Model):
     items = models.ManyToManyField(List, blank=True, related_name='list_items')
 
     def __str__(self):
-        return f"{self.user} has stored {self.items}"
+        return f"{self.username} has stored {self.items}"

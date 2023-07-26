@@ -49,8 +49,9 @@ def index(request):
             # user_profile = UserProfile.objects.create(username=user_instance)
             # print('user profile ' + str(user_profile))
             user_profile.items.add(entry)
-            user_profile.save()
+            # user_profile.save()
             print(user_profile.items.all())
+            # print('final '+ str(user_profile))
 
             # print(f"{movie_name} streaming on {platform_name}")
 
@@ -68,14 +69,14 @@ def index(request):
             return HttpResponseRedirect(reverse('index'))
 
     elif request.method == 'GET':
-        try:
-            current_user = request.user.username
-            print(current_user)
-            movies = current_user.items.all()
-            print(movies)
-        except:
-            return render(request, 'watchlist/index.html')
-        else:
+            author = request.user
+            print(author)
+            user_profile, created = UserProfile.objects.get_or_create(username=author)
+
+            # print(current_user)
+            movies = user_profile.items.all()
+            # for movie in movies:
+            #     print(movie.platform_name)
             return render(request, 'watchlist/index.html', {
             'movies': movies
             })

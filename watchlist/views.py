@@ -35,6 +35,7 @@ def index(request):
             movie_name = request.POST['movieName'].title()
             platform_name = request.POST['platformName'].title()
             author = request.user
+            print('author'+ str(author))
             entry = List(movie_name=movie_name, platform_name=platform_name)
             print(entry)
             entry.save()

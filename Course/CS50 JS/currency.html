@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange</title>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function()
+        {
+           setInterval(function(){ fetch("https://www.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
+            .then(function (response){
+                return response.json()
+            }).then(function(data){
+                const rate = data.price;
+                document.querySelector('body').innerHTML = `BTC is worth $${rate}`
+           }), 1000})
+        });
+    </script>
+    <h1></h1>
+</body>
+</html>

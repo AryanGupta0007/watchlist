@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello!</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function()
+        {
+            // change font color to red
+            // var red_button = document.querySelector('#red').onclick = function(){
+            //     document.querySelector('#hello').style.color = 'red';
+            // }
+            // var blue_button = document.querySelector('#blue').onclick = function(){
+            //     document.querySelector('#hello').style.color = 'blue';
+            // }
+            // var green_button = document.querySelector('#green').onclick = function(){
+            //     document.querySelector('#hello').style.color = 'green';
+            // }
+
+            // simpler way of writing the above code
+            // document.querySelectorAll('button').forEach(function(button){
+            //     button.onclick = function(){
+            //         document.querySelector('#hello').style.color = button.dataset.color;
+
+            //     }
+            // })
+            document.querySelector('select').onchange = function()
+            {
+                document.querySelector('#hello').style.color = this.value;
+            }
+
+            var submit = document.querySelector('form').onsubmit = function (){
+                const userName = document.querySelector('#name').value;
+                alert(`Hi ${userName}`)
+                }})
+
+        
+    </script>
+</head>
+<body>
+    <h1 id="hello">Hello!</h1>
+    <!-- <button data-color="red">red</button>
+    <button data-color="blue">blue</button>
+    <button data-color="green">green</button> -->
+    <select>
+        <option value="Black">Black</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+
+    </select>
+
+    <form>
+        <input autofocus id="name" placeholder="Name" type="text">
+        <input type ="submit">
+    
+    </form>
+    
+</body>
+</html>
